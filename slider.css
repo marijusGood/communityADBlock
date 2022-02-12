@@ -1,0 +1,59 @@
+.slidecontainerRemoveAdd {
+    width: 400px;
+    height: 100px;
+    padding: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -200px;
+    z-index: 15;
+    background: #e41d1d;
+  }
+  
+.sliderRemoveAD {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 25px;
+  background: #f8eded;
+  outline: black;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.sliderRemoveAD:hover {
+  opacity: 1;
+}
+
+.sliderRemoveAD::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #00214d;
+  cursor: pointer;
+}
+
+.sliderRemoveAD::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #00214d;
+  cursor: pointer;
+}
+
+.highlight-wrap {
+  position: absolute;
+  z-index: 999;
+  position: fixed;
+  box-sizing: border-box;
+  background: #205081;
+  outline: rgb(15, 77, 154) solid 1px;
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+  overflow: hidden;
+  display: inline-block !important;
+  border: 2px solid rgb(65, 48, 221) !important;
+  background-color: rgb(65, 48, 221) !important;
+}
+
