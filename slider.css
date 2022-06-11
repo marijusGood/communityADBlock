@@ -57,3 +57,6 @@
   background-color: rgb(65, 48, 221) !important;
 }
 
+.hidden-element {
+  display: none;
+}

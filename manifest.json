@@ -3,7 +3,7 @@
     "description": "Community based AD block to remove 100% of the ADs",
     "version": "0.0",
     "manifest_version": 3,
-    "content_scripts": [
+    "content_scripts": [ 
         {
             "matches": ["<all_urls>"],
             "js": ["removeAD.js"],

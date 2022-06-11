@@ -9,7 +9,8 @@ function myFunction() {
       let message = {
         message: "blockAD"
       }
-  
+      
+      //send to removeAD.js to be activated (this seems wrong)
       chrome.tabs.sendMessage(tabs[0].id, message);
     });
 }
