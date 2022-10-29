@@ -1,20 +1,19 @@
-let key = "key";
-let value = "aaa";
+function saveADToStorage(recivedDataJson) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+  }, function(tabs) {
+      var tabURL = tabs[0].url;
 
-// storage https://developer.chrome.com/docs/extensions/reference/storage/#usage
-chrome.storage.local.set({key: value}, function() {
-  console.log('Value is set to ' + value);
-});
+      let pattern = /(?:\/\/).+?(?=\/)/;
+      let match = tabURL.match(pattern)[0];
+      let url = match.substring(2, match.length);
 
-chrome.storage.local.get(['key'], function(result) {
-  console.log('Value currently is ' + result.key);
-});
+      chrome.storage.local.set({[url]: recivedDataJson}, function() {
+        console.log(url +' is set to ' + recivedDataJson);
+      });
+  });
 
-// why is this here?
-async function getCurrentTab() {
-  let queryOptions = { active: true, currentWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
-  return tab;
 }
 
 //example of a listener
@@ -29,5 +28,6 @@ chrome.runtime.onMessage.addListener(receiver);
 // element that is deleted 
 function receiver(request, sender, sendResponse) {
   sendResponse({status: 'ok'});
-  console.log(request);
+  saveADToStorage(JSON.stringify(request));
 }
+

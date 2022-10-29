@@ -7,6 +7,7 @@ window.addEventListener('click', function (e) {
         //TODO: this does not block onClick
         // prevent links or buttons working https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
         e.preventDefault();
+        event.stopImmediatePropagation();
 
         eParent = getParents(e.target);
         
@@ -34,7 +35,6 @@ window.addEventListener('click', function (e) {
         buttonPressed = true;
     }
 
-    
     return false;
 });
 
@@ -127,8 +127,9 @@ function deleteAd(){
     var hwrappers = document.getElementsByClassName("Box");
 
     console.log(hwrappers);
-    selected.classList.add("hidden-element");
+    //selected.classList.add("hidden-element");
 
+    selected.remove();
     selected = null;
 }
 
