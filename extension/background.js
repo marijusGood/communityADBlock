@@ -31,3 +31,44 @@ function receiver(request, sender, sendResponse) {
   saveADToStorage(JSON.stringify(request));
 }
 
+
+// chrome.tabs.query(params, (tabs) => {
+
+//   let message = {
+//     nodeName: "NAV",
+//     ID: "",
+//     Class: "header-nav",
+//     message: "fromBC"
+//   }
+  
+//   //send to removeAD.js to be activated (this seems wrong)
+//   chrome.tabs.sendMessage(tabs[0].id, message);
+// });
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+sleep(1000);
+
+
+
+function myFunction() {
+  let params = {
+    active: true,
+    currentWindow: true
+  }
+  chrome.tabs.query(params, (tabs) => {
+    let message = {
+      nodeName: "NAV",
+      ID: "",
+      Class: "header-nav",
+      message: "fromBC"
+    }
+    
+    //send to removeAD.js to be activated (this seems wrong)
+    chrome.tabs.sendMessage(tabs[0].id, message);
+  });
+}
+
+myFunction();

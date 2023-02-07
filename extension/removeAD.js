@@ -116,7 +116,7 @@ function deleteAd(){
         Class: selected.className
     }
     
-    //send message to background?
+    //send message to background
     chrome.runtime.sendMessage(message);
 
     console.log(selected.outerHTML);
@@ -145,7 +145,24 @@ chrome.runtime.onMessage.addListener(receiver);
 
 function receiver(request, sender, sendResponse) {
     sendResponse({status: 'ok'});
+
+    console.log(request);
+
     if(request.message === "blockAD") {
         buttonPressed = false;
     }
+    if(request.message === "fromBC") {
+        if(message.ID != "") {
+            x = document.getElementById(message.ID);
+            console.log("from BC");
+            x.remove();
+            return true;
+        }
+        if(essage.Class != "") {
+            x = document.getElementsByClassName(message.Class);
+            x.remove();
+            return true;
+        }
+    }
+    return true;
 }
